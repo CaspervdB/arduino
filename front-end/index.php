@@ -168,17 +168,21 @@
     
     if(isset($_POST['w']))
     {
-        $id = 'w';
+        $id = 'F';
     }else if(isset($_POST['a']))
     {
-        $id = 'a';
+        $id = 'L';
     }else if(isset($_POST['s']))
     {
-        $id = 's';
+        $id = 'B';
     }else if(isset($_POST['d'])) 
     {
-        $id = 'd';
+        $id = 'R';
+    }else if(isset($_POST['q'])) 
+    {
+        $id = 'S';
     }
+    
     if ($id != "")
     {
         
