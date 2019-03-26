@@ -162,48 +162,48 @@
         
         
     <?php
-//    include "dbConn.php";
-//    $id = "";
-//    $user_id = "9981";
-//    
-//    if(isset($_POST['w']))
-//    {
-//        $id = 'w';
-//    }else if(isset($_POST['a']))
-//    {
-//        $id = 'a';
-//    }else if(isset($_POST['s']))
-//    {
-//        $id = 's';
-//    }else if(isset($_POST['d'])) 
-//    {
-//        $id = 'd';
-//    }
-//    if ($id != "")
-//    {
-//        
-//        $SQLstring2 = "INSERT INTO user_command (user_id, cmd_id) VALUES(?, ?)";
-//        if ($stmt = mysqli_prepare($conn, $SQLstring2)) 
-//        {
-//            mysqli_stmt_bind_param($stmt, 'is', $user_id, $id);
-//            $QueryResult2 = mysqli_stmt_execute($stmt);
-//            if ($QueryResult2 === FALSE) 
-//            {
-//                echo "<p>Unable to execute the query.</p>"
-//                . "<p>Error code "
-//                . mysqli_errno($conn)
-//                . ": "
-//                . mysqli_error($conn)
-//                . "</p>";
-//            } else {
-//                echo "Executed!";
-//                    
-//            }
-//            //Clean up the $stmt after use
-//            mysqli_stmt_close($stmt);
-//        }
-//    }
-//    
+    include "dbConn.php";
+    $id = "";
+    $user_id = "9981";
+    
+    if(isset($_POST['w']))
+    {
+        $id = 'w';
+    }else if(isset($_POST['a']))
+    {
+        $id = 'a';
+    }else if(isset($_POST['s']))
+    {
+        $id = 's';
+    }else if(isset($_POST['d'])) 
+    {
+        $id = 'd';
+    }
+    if ($id != "")
+    {
+        
+        $SQLstring2 = "INSERT INTO user_command (user_id, cmd_id) VALUES(?, ?)";
+        if ($stmt = mysqli_prepare($conn, $SQLstring2)) 
+        {
+            mysqli_stmt_bind_param($stmt, 'is', $user_id, $id);
+            $QueryResult2 = mysqli_stmt_execute($stmt);
+            if ($QueryResult2 === FALSE) 
+            {
+                echo "<p>Unable to execute the query.</p>"
+                . "<p>Error code "
+                . mysqli_errno($conn)
+                . ": "
+                . mysqli_error($conn)
+                . "</p>";
+            } else {
+                echo "Executed!";
+                    
+            }
+            //Clean up the $stmt after use
+            mysqli_stmt_close($stmt);
+        }
+    }
+    
 ?>
     
 </body>
