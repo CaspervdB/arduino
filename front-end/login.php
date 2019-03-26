@@ -6,30 +6,30 @@
 
 <?php
 if(isset($_SESSION['loggedIn'])){
-  echo 'Je bent al ingelogd!</div>';
+  echo 'Je bent al ingelogd!';
   die();
 }
 
 if(isset($_POST['submit'])){
 	$username = ($_POST['username']);
 	$password = ($_POST['password']);
-	$SQLstring = "SELECT userId, userPass FROM nhl_stenden_users WHERE userName = ?";
-		if ($stmt = mysqli_prepare($DBConnect, $SQLstring)) {
+	$SQLstring = "SELECT id, pass FROM users WHERE username = ?";
+		if ($stmt = mysqli_prepare($conn, $SQLstring)) {
 			mysqli_stmt_bind_param($stmt, "s", $username);
 			mysqli_stmt_execute($stmt);
-			mysqli_stmt_bind_result($stmt, $userId, $userPass);
+			mysqli_stmt_bind_result($stmt, $id, $pass);
 			mysqli_stmt_store_result($stmt);
 			if (mysqli_stmt_num_rows($stmt) > 0) {
 				mysqli_stmt_fetch($stmt);
-				if (password_verify($password, $userPass)) {
+				if($password === $pass) {
 					$_SESSION['loggedIn'] = true;
-					$_SESSION['ID'] = $userId;
+					$_SESSION['ID'] = $id;
 					echo "<p>Je bent ingelogd!</p>";
 					header('Location: index.php');
 				}
-				else { echo '<div class="notification">Verkeerd wachtwoord!</div>';}
+				else { echo 'Verkeerd wachtwoord!';}
 			}
-			else { echo '<div class="notification">Deze combinatie bestaat niet!</div>'; }
+			else { echo 'Deze combinatie bestaat niet!'; }
 		}
 	}
 
