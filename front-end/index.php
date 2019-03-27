@@ -138,20 +138,20 @@
         <div id="controllerbox" style="display: <?php echo $DisplayController; ?>;">
             <input type="text" id="besturingsvak" onkeydown="GetKeyInput()" onkeyup="Stop()"> <!--   -->
 
-            <form action = 'Indexx.php' method = 'post' id="forward"> 
+            <form action = 'index.php' method = 'post' id="forward"> 
                 <input type="radio" value="F" name="w" id="w" checked="checked"/>
             </form>
-            <form action = 'Indexx.php' method = 'post' id="left"> 
+            <form action = 'index.php' method = 'post' id="left"> 
                 <input type="radio" value="L" name="a" id="a" checked="checked"/>
             </form>
-            <form action = 'Indexx.php' method = 'post' id="right"> 
+            <form action = 'index.php' method = 'post' id="right"> 
                 <input type="radio" value="R" name="d" id="d" checked="checked"/>
             </form>
-            <form action = 'Indexx.php' method = 'post' id="back"> 
+            <form action = 'index.php' method = 'post' id="back"> 
                 <input type="radio" value="B" name="s" id="s" checked="checked"/>
             </form>
 
-            <form action = 'Indexx.php' method = 'post' id="stop"> 
+            <form action = 'index.php' method = 'post' id="stop"> 
                 <input type="radio" value="Q" name="q" id="q" checked="checked"/>
             </form>
 
@@ -257,48 +257,48 @@
         
         
     <?php
-//    include "dbConn.php";
-//    $id = "";
-//    $user_id = "9981";
-//    
-//    if(isset($_POST['w']))
-//    {
-//        $id = 'w';
-//    }else if(isset($_POST['a']))
-//    {
-//        $id = 'a';
-//    }else if(isset($_POST['s']))
-//    {
-//        $id = 's';
-//    }else if(isset($_POST['d'])) 
-//    {
-//        $id = 'd';
-//    }
-//    if ($id != "")
-//    {
-//        
-//        $SQLstring2 = "INSERT INTO user_command (user_id, cmd_id) VALUES(?, ?)";
-//        if ($stmt = mysqli_prepare($conn, $SQLstring2)) 
+//        include "dbConn.php";
+//        $id = "";
+//        $user_id = "9981";
+//
+//        if(isset($_POST['w']))
 //        {
-//            mysqli_stmt_bind_param($stmt, 'is', $user_id, $id);
-//            $QueryResult2 = mysqli_stmt_execute($stmt);
-//            if ($QueryResult2 === FALSE) 
-//            {
-//                echo "<p>Unable to execute the query.</p>"
-//                . "<p>Error code "
-//                . mysqli_errno($conn)
-//                . ": "
-//                . mysqli_error($conn)
-//                . "</p>";
-//            } else {
-//                echo "Executed!";
-//                    
-//            }
-//            //Clean up the $stmt after use
-//            mysqli_stmt_close($stmt);
+//            $id = 'w';
+//        }else if(isset($_POST['a']))
+//        {
+//            $id = 'a';
+//        }else if(isset($_POST['s']))
+//        {
+//            $id = 's';
+//        }else if(isset($_POST['d'])) 
+//        {
+//            $id = 'd';
 //        }
-//    }
-//    
+//        if ($id != "")
+//        {
+//
+//            $SQLstring2 = "INSERT INTO user_command (user_id, cmd_id) VALUES(?, ?)";
+//            if ($stmt = mysqli_prepare($conn, $SQLstring2)) 
+//            {
+//                mysqli_stmt_bind_param($stmt, 'is', $user_id, $id);
+//                $QueryResult2 = mysqli_stmt_execute($stmt);
+//                if ($QueryResult2 === FALSE) 
+//                {
+//                    echo "<p>Unable to execute the query.</p>"
+//                    . "<p>Error code "
+//                    . mysqli_errno($conn)
+//                    . ": "
+//                    . mysqli_error($conn)
+//                    . "</p>";
+//                } else {
+//                    echo "Executed!";
+//
+//                }
+//                //Clean up the $stmt after use
+//                mysqli_stmt_close($stmt);
+//            }
+//        }
+
 ?>
     
 </body>
