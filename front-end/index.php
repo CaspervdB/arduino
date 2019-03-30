@@ -145,7 +145,7 @@
         </div>
         
         <script>
-            var audio = new Audio('INF1j.mp3');
+            var audio = new Audio('Car.mp3');
             Wtoets = document.getElementById("toetsW");
             Atoets = document.getElementById("toetsA");
             Stoets = document.getElementById("toetsS");
@@ -159,28 +159,28 @@
                 }   
                 
                 if(q == 87){
-                    Wtoets.style.backgroundColor = 'red'; 
+                    Wtoets.style.backgroundColor = 'grey'; 
                 }
                 else{
                     Wtoets.style.backgroundColor = 'lightgrey';
                 }
                                 
                 if(q == 83){
-                    Stoets.style.backgroundColor = 'red'; 
+                    Stoets.style.backgroundColor = 'grey'; 
                 }
                 else{
                     Stoets.style.backgroundColor = 'lightgrey';
                 }
                 
                 if(q == 65){
-                    Atoets.style.backgroundColor = 'red'; 
+                    Atoets.style.backgroundColor = 'grey'; 
                 }
                 else{
                     Atoets.style.backgroundColor = 'lightgrey';
                 }
                 
                 if(q == 68){
-                    Dtoets.style.backgroundColor = 'red'; 
+                    Dtoets.style.backgroundColor = 'grey'; 
                 }
                 else{
                     Dtoets.style.backgroundColor = 'lightgrey';
