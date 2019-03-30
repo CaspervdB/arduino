@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
         input {
-			opacity: 0;
+            opacity: 0;
         }
         *{
             font-family: Comic Sans MS;
@@ -42,7 +42,7 @@
             width: 80px;
         }
         
-        #toets{
+        .toets{
             background-color: lightgrey;
             text-align: center;
             font-size: 25px;
@@ -126,13 +126,13 @@
             <table>
                 <tr>
                     <td></td>
-                    <td id="toets">W</td>
+                    <td id="toetsW" class="toets">W</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td id="toets">A</td>
-                    <td id="toets">S</td>
-                    <td id="toets">D</td>
+                    <td id="toetsA" class="toets">A</td>
+                    <td id="toetsS" class="toets">S</td>
+                    <td id="toetsD" class="toets">D</td>
                 </tr>
             </table>
         </div>
@@ -143,5 +143,65 @@
             <input type="submit" value="Start Doolhof">
             <input type="submit" value="Start zoektocht">
         </div>
+        
+        <script>
+            var audio = new Audio('Car.mp3');
+            Wtoets = document.getElementById("toetsW");
+            Atoets = document.getElementById("toetsA");
+            Stoets = document.getElementById("toetsS");
+            Dtoets = document.getElementById("toetsD");  
+            
+            function GetKeyInput(){
+                q = event.which || event.keyCode;              
+                
+                if(q == 87 || q == 83 || q == 65 || q == 68){
+                    audio.play();      
+                }   
+                
+                if(q == 87){
+                    Wtoets.style.backgroundColor = 'red'; 
+                }
+                else{
+                    Wtoets.style.backgroundColor = 'lightgrey';
+                }
+                                
+                if(q == 83){
+                    Stoets.style.backgroundColor = 'red'; 
+                }
+                else{
+                    Stoets.style.backgroundColor = 'lightgrey';
+                }
+                
+                if(q == 65){
+                    Atoets.style.backgroundColor = 'red'; 
+                }
+                else{
+                    Atoets.style.backgroundColor = 'lightgrey';
+                }
+                
+                if(q == 68){
+                    Dtoets.style.backgroundColor = 'red'; 
+                }
+                else{
+                    Dtoets.style.backgroundColor = 'lightgrey';
+                }
+            }
+
+            function Stop(){
+                audio.pause();  
+                Wtoets.style.backgroundColor = 'lightgrey';
+                Atoets.style.backgroundColor = 'lightgrey';
+                Stoets.style.backgroundColor = 'lightgrey';
+                Dtoets.style.backgroundColor = 'lightgrey';
+            }
+            
+            audio.onended = function() {
+                audio.currentTime = 0;
+            };
+            
+            window.setInterval(function(){
+                document.getElementById("besturingsvak").select();  
+            }, 50);
+        </script>
 </body>
 </html>
