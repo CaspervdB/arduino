@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
-        input {
-            opacity: 0;
-        }
         *{
             font-family: Comic Sans MS;
             padding: 0;
@@ -74,26 +71,28 @@
         <p> Maak gebruik van de A-S-W-D toetsen om naar link, achteren, rechts en voren te bewegen. </p>
         <h2> druk de knop langere tijd in</h2>
         <h3><a href="login.php">Inloggen</a> - <a href="logout.php">Uitloggen</a></h3>
-        <input type="text" id="besturingsvak" onkeydown="GetKeyInput()" onkeyup="Stop()"> <!--   -->
+        <div id="controllerbox">
+            <input type="text" id="besturingsvak" onkeydown="GetKeyInput()" onkeyup="Stop()"> <!--   -->
+        
+            <form action = 'index.php' method = 'post' id="forward">
+                <input type="radio" value="F" name="w" id="w" checked="checked"/>
+               <!-- <input type="submit" value="p" name="w" id="w" checked="checked"/> -->
+            </form>
+            <form action = 'index.php' method = 'post' id="left">
+                <input type="radio" value="L" name="a" id="a" checked="checked"/>
+            </form>
+            <form action = 'index.php' method = 'post' id="right">
+                <input type="radio" value="R" name="d" id="d" checked="checked"/>
+            </form>
+            <form action = 'index.php' method = 'post' id="back">
+                <input type="radio" value="B" name="s" id="s" checked="checked"/>
+            </form>
 
-        <form action = 'index.php' method = 'post' id="forward">
-            <input type="radio" value="F" name="w" id="w" checked="checked"/>
-           <!-- <input type="submit" value="p" name="w" id="w" checked="checked"/> -->
-        </form>
-        <form action = 'index.php' method = 'post' id="left">
-            <input type="radio" value="L" name="a" id="a" checked="checked"/>
-        </form>
-        <form action = 'index.php' method = 'post' id="right">
-            <input type="radio" value="R" name="d" id="d" checked="checked"/>
-        </form>
-        <form action = 'index.php' method = 'post' id="back">
-            <input type="radio" value="B" name="s" id="s" checked="checked"/>
-        </form>
-
-        <form action = 'index.php' method = 'post' id="stop">
-            <input type="radio" value="Q" name="q" id="q" checked="checked"/>
-        </form>
-
+            <form action = 'index.php' method = 'post' id="stop">
+                <input type="radio" value="Q" name="q" id="q" checked="checked"/>
+            </form>
+        </div>
+        
         <div id="Infotest"> </div>
         <div id="richtingbox">
             <?php
@@ -144,8 +143,13 @@
             <input type="submit" value="Start zoektocht">
         </div>
         
+        <?php
+            $sound = 'INF1j.mp3'
+        ?>
+        
         <script>
-            var audio = new Audio('Car.mp3');
+            audiofile = 'Sounds/' + <?php echo json_encode($sound); ?>;
+            audio = new Audio(audiofile);
             Wtoets = document.getElementById("toetsW");
             Atoets = document.getElementById("toetsA");
             Stoets = document.getElementById("toetsS");
@@ -153,7 +157,6 @@
             
             function GetKeyInput(){
                 q = event.which || event.keyCode;              
-                
                 if(q == 87 || q == 83 || q == 65 || q == 68){
                     audio.play();      
                 }   
@@ -189,6 +192,7 @@
 
             function Stop(){
                 audio.pause();  
+                audio.currentTime = 0;
                 Wtoets.style.backgroundColor = 'lightgrey';
                 Atoets.style.backgroundColor = 'lightgrey';
                 Stoets.style.backgroundColor = 'lightgrey';
