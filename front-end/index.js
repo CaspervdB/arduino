@@ -4,7 +4,7 @@ window.addEventListener("keydown", getKeyPress);
 window.addEventListener("keyup", Stop);
 
 function Stop(){   
-    stopmessage = "q";
+    stopmessage = "S";
     if(cmd == "F" || cmd == "B" || cmd == "L" || cmd == "R"){	
         $.ajax( {
                 url: "sendCommand.php",
