@@ -9,9 +9,44 @@
 
     </script>
     <style>
-        input {
-			opacity: 0;
-		}
+        *{
+            font-family: Comic Sans MS;
+            padding: 0;
+            margin: 0;
+        }
+
+        #controllerbox input{
+            opacity: 0;
+            height: 0px;
+            width: 0px;
+        }
+
+        #controllerbox form{
+            height: 0px;
+            width: 0px;
+            display: inline;
+        }
+
+        #BeginGames input{
+            height: 130px;
+            width: 130px;
+        }
+
+        #DisplayedController{
+            margin: 50px;
+        }
+
+        #DisplayedController td{
+            height: 80px;
+            width: 80px;
+        }
+
+        .toets{
+            background-color: lightgrey;
+            text-align: center;
+            font-size: 25px;
+        }
+
     </style>
 </head>
 <body>
@@ -19,6 +54,29 @@
         <p> Maak gebruik van de A-S-W-D toetsen om naar link, achteren, rechts en voren te bewegen. </p>
         <h2> druk de knop langere tijd in</h2>
         <h3><a href="login.php">Inloggen</a> - <a href="logout.php">Uitloggen</a></h3>
+        <div id="controllerbox">
+            <input type="text" id="besturingsvak" onkeydown="GetKeyInput()" onkeyup="Stop()"> <!--   -->
+
+            <form action = 'index.php' method = 'post' id="forward">
+                <input type="radio" value="F" name="w" id="w" checked="checked"/>
+               <!-- <input type="submit" value="p" name="w" id="w" checked="checked"/> -->
+            </form>
+            <form action = 'index.php' method = 'post' id="left">
+                <input type="radio" value="L" name="a" id="a" checked="checked"/>
+            </form>
+            <form action = 'index.php' method = 'post' id="right">
+                <input type="radio" value="R" name="d" id="d" checked="checked"/>
+            </form>
+            <form action = 'index.php' method = 'post' id="back">
+                <input type="radio" value="B" name="s" id="s" checked="checked"/>
+            </form>
+
+            <form action = 'index.php' method = 'post' id="stop">
+                <input type="radio" value="Q" name="q" id="q" checked="checked"/>
+            </form>
+        </div>
+
+        <div id="Infotest"> </div>
         <div id="richtingbox">
             <?php
                 if(isset($_POST['w'])){
@@ -43,12 +101,91 @@
 		include 'sendCommand.php';
 		?>
 
+        <div id="DisplayedController">
+            <table>
+                <tr>
+                    <td></td>
+                    <td id="toetsW" class="toets">W</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td id="toetsA" class="toets">A</td>
+                    <td id="toetsS" class="toets">S</td>
+                    <td id="toetsD" class="toets">D</td>
+                </tr>
+            </table>
+        </div>
 
+        <div id="BeginGames">
+            <input type="submit" value="Start Lijnrace">
+            <input type="submit" value="Start Parcour">
+            <input type="submit" value="Start Doolhof">
+            <input type="submit" value="Start zoektocht">
+        </div>
 
+        <?php
+            $sound = 'INF1j.mp3'
+        ?>
 
+        <script>
+            audiofile = 'Sounds/' + <?php echo json_encode($sound); ?>;
+            audio = new Audio(audiofile);
+            Wtoets = document.getElementById("toetsW");
+            Atoets = document.getElementById("toetsA");
+            Stoets = document.getElementById("toetsS");
+            Dtoets = document.getElementById("toetsD");
 
+            function GetKeyInput(){
+                q = event.which || event.keyCode;
+                if(q == 87 || q == 83 || q == 65 || q == 68){
+                    audio.play();
+                }
 
-   
+                if(q == 87){
+                    Wtoets.style.backgroundColor = 'grey';
+                }
+                else{
+                    Wtoets.style.backgroundColor = 'lightgrey';
+                }
 
+                if(q == 83){
+                    Stoets.style.backgroundColor = 'grey';
+                }
+                else{
+                    Stoets.style.backgroundColor = 'lightgrey';
+                }
+
+                if(q == 65){
+                    Atoets.style.backgroundColor = 'grey';
+                }
+                else{
+                    Atoets.style.backgroundColor = 'lightgrey';
+                }
+
+                if(q == 68){
+                    Dtoets.style.backgroundColor = 'grey';
+                }
+                else{
+                    Dtoets.style.backgroundColor = 'lightgrey';
+                }
+            }
+
+            function Stop(){
+                audio.pause();
+                audio.currentTime = 0;
+                Wtoets.style.backgroundColor = 'lightgrey';
+                Atoets.style.backgroundColor = 'lightgrey';
+                Stoets.style.backgroundColor = 'lightgrey';
+                Dtoets.style.backgroundColor = 'lightgrey';
+            }
+
+            audio.onended = function() {
+                audio.currentTime = 0;
+            };
+
+            window.setInterval(function(){
+                document.getElementById("besturingsvak").select();
+            }, 50);
+        </script>
 </body>
 </html>
