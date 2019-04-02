@@ -18,6 +18,9 @@ function getKeyPress()
         case 68:
             cmd = "R";
             break;
+		case 81:
+            cmd = "S";
+            break;
     }
     console.log(cmd);
 	if(cmd != "")

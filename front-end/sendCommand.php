@@ -20,6 +20,7 @@
         $cmd = 'S';
     }
 
+
     if ($cmd != "")
     {
 
@@ -49,6 +50,10 @@
                 if($cmd == "B"){
                     echo 'back';
                 }
+				if($cmd == "S"){
+                    echo 'stop';
+                }
+				
 
             }
             //Clean up the $stmt after use
