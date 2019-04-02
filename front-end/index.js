@@ -1,5 +1,26 @@
 window.addEventListener("keydown", getKeyPress);
 
+//mocht het niet kloppen dan kun je dit weghalen
+window.addEventListener("keyup", Stop);
+
+function Stop(){   
+    stopmessage = "q";
+    if(cmd == "F" || cmd == "B" || cmd == "L" || cmd == "R"){	
+        $.ajax( {
+                url: "sendCommand.php",
+                method: "POST",
+                data: {
+                        command:stopmessage
+                },
+                dataType: "text",
+                success: function(strMessage) {
+                        $("#stopped").text(strMessage);
+                }
+        });
+    }
+}
+//mocht het niet kloppen dan kun je dit weghalen
+
 function getKeyPress()
 {
     let x = event.which || event.keyCode;
@@ -18,7 +39,7 @@ function getKeyPress()
         case 68:
             cmd = "R";
             break;
-		case 81:
+        case 81:
             cmd = "S";
             break;
     }
