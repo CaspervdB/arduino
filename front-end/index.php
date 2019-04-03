@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Adruino</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
 
     </script>
     <style>
         *{
-            font-family: Comic Sans MS;
+            font-family: roboto;
             padding: 0;
             margin: 0;
         }
@@ -26,25 +27,64 @@
             width: 0px;
             display: inline;
         }
+        
 
-        #BeginGames input{
-            height: 130px;
-            width: 130px;
+        #BeginGames{
+            margin: 40px;
+            margin-right: 0;
         }
-
+        
+        #BeginGames input{
+            height: 100px;
+            width: 100px;
+            transform: skewX(-10deg);
+            border-radius: 5px;
+            border: 0;
+            background-color: cadetblue;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            margin-left: 2px;
+            cursor: pointer;
+        }
+        
+        #FullStopButton{
+            height: 100px;
+            padding-top: 30px;
+            width: 130px;
+            background-color: tomato;
+            color: white;
+            margin: 20px;
+            margin-left: 40px;
+            border-radius: 100%;
+            text-align: center;
+            font-size: 30px;
+            font-weight: 900;
+            font-style: italic;
+            float: left;
+        }
+        
         #DisplayedController{
-            margin: 50px;
+            margin: 20px;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 25px; 
+            float: left;
         }
 
         #DisplayedController td{
             height: 80px;
             width: 80px;
+            border: 2px solid white;
         }
 
         .toets{
-            background-color: lightgrey;
+            background-color: #bfbfbf;
             text-align: center;
             font-size: 25px;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
         }
 
     </style>
@@ -101,7 +141,31 @@
 		include 'sendCommand.php';
 		?>
 
-        <div id="DisplayedController">
+        <div id="BeginGames">
+            <input type="submit" id="Lijnrace" value="Lijnrace" onclick="clickLR()">
+            <input type="submit" id="Parcour" value="Parcour" onclick="clickP()">
+            <input type="submit" id="Horserace" value="Horserace" onclick="clickHR()">
+            <input type="submit" id="Zoektocht" value="Zoektocht" onclick="clickZT()">
+        </div>
+        
+        <script>
+            function clickLR(){
+                document.getElementById('Lijnrace').style.backgroundColor = "tomato";
+            }           
+            function clickP(){
+                document.getElementById('Parcour').style.backgroundColor = "tomato";
+            }          
+            function clickHR(){
+                document.getElementById('Horserace').style.backgroundColor = "tomato";
+            }      
+            function clickZT(){
+                document.getElementById('Zoektocht').style.backgroundColor = "tomato";
+            }    
+            function GiveControllerInstruction(){
+                alert("Gebruik de toetsen op je toetsenbord om de robot te besturen!");
+            }
+        </script>
+        <div id="DisplayedController" onclick="GiveControllerInstruction()">
             <table>
                 <tr>
                     <td></td>
@@ -116,15 +180,12 @@
             </table>
         </div>
 
-        <div id="BeginGames">
-            <input type="submit" value="Start Lijnrace">
-            <input type="submit" value="Start Parcour">
-            <input type="submit" value="Start Doolhof">
-            <input type="submit" value="Start zoektocht">
+        <div id="FullStopButton">
+            STOP SPEL
         </div>
-
+        
         <?php
-            $sound = 'INF1j.mp3'
+            $sound = 'Car.mp3'
         ?>
 
         <script>
@@ -144,39 +205,27 @@
                 if(q == 87){
                     Wtoets.style.backgroundColor = 'grey';
                 }
-                else{
-                    Wtoets.style.backgroundColor = 'lightgrey';
-                }
 
                 if(q == 83){
                     Stoets.style.backgroundColor = 'grey';
-                }
-                else{
-                    Stoets.style.backgroundColor = 'lightgrey';
                 }
 
                 if(q == 65){
                     Atoets.style.backgroundColor = 'grey';
                 }
-                else{
-                    Atoets.style.backgroundColor = 'lightgrey';
-                }
 
                 if(q == 68){
                     Dtoets.style.backgroundColor = 'grey';
-                }
-                else{
-                    Dtoets.style.backgroundColor = 'lightgrey';
                 }
             }
 
             function Stop(){
                 audio.pause();
                 audio.currentTime = 0;
-                Wtoets.style.backgroundColor = 'lightgrey';
-                Atoets.style.backgroundColor = 'lightgrey';
-                Stoets.style.backgroundColor = 'lightgrey';
-                Dtoets.style.backgroundColor = 'lightgrey';
+                Wtoets.style.backgroundColor = '#bfbfbf';
+                Atoets.style.backgroundColor = '#bfbfbf';
+                Stoets.style.backgroundColor = '#bfbfbf';
+                Dtoets.style.backgroundColor = '#bfbfbf';
             }
 
             audio.onended = function() {

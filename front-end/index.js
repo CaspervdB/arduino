@@ -3,9 +3,11 @@ window.addEventListener("keydown", getKeyPress);
 //mocht het niet kloppen dan kun je dit weghalen
 window.addEventListener("keyup", Stop);
 
+lastmove = "";
+
 function Stop(){   
-    stopmessage = "S";
-    if(cmd == "F" || cmd == "B" || cmd == "L" || cmd == "R"){	
+    if(lastmove == "F" || lastmove == "B" || lastmove == "L" || lastmove == "R"){	
+        stopmessage = "S";
         $.ajax( {
                 url: "sendCommand.php",
                 method: "POST",
@@ -29,15 +31,19 @@ function getKeyPress()
     {
         case 87:
             cmd = "F";
+            lastmove = "F";
             break;
         case 83:
             cmd = "B";
+            lastmove = "B";
             break;
         case 65:
             cmd = "L";
+            lastmove = "L";
             break;
         case 68:
             cmd = "R";
+            lastmove = "R";
             break;
         case 81:
             cmd = "S";
