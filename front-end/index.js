@@ -43,7 +43,7 @@ function getKeyPress()
             break;
         case 81:
             cmd = "S";
-            break;
+        break;
     }
     if(document.getElementById('lastmove').innerHTML != cmd){
 	if(cmd != ""){

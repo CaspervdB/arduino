@@ -33,7 +33,10 @@
             display: inline;
         }
         
-
+        #toetsQ{
+            opacity: 0.3;
+        }
+        
         #BeginGames{
             margin: 40px;
             margin-right: 0;
@@ -174,7 +177,7 @@
         <div id="DisplayedController" onclick="GiveControllerInstruction()">
             <table>
                 <tr>
-                    <td></td>
+                    <td id="toetsQ" class="toets">Q</td>
                     <td id="toetsW" class="toets">W</td>
                     <td></td>
                 </tr>
@@ -201,7 +204,8 @@
             Atoets = document.getElementById("toetsA");
             Stoets = document.getElementById("toetsS");
             Dtoets = document.getElementById("toetsD");
-
+            Qtoets = document.getElementById("toetsQ");
+            
             function GetKeyInput(){
                 q = event.which || event.keyCode;
                 if(q == 87 || q == 83 || q == 65 || q == 68){
@@ -223,6 +227,11 @@
                 if(q == 68){
                     Dtoets.style.backgroundColor = 'grey';
                 }
+
+                if(q == 81){
+                    Qtoets.style.backgroundColor = 'grey';
+                }
+                
             }
 
             function Stop(){
@@ -232,6 +241,7 @@
                 Atoets.style.backgroundColor = '#bfbfbf';
                 Stoets.style.backgroundColor = '#bfbfbf';
                 Dtoets.style.backgroundColor = '#bfbfbf';
+                Qtoets.style.backgroundColor = '#bfbfbf';
             }
 
             audio.onended = function() {
