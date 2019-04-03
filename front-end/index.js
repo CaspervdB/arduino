@@ -3,11 +3,14 @@ window.addEventListener("keydown", getKeyPress);
 //mocht het niet kloppen dan kun je dit weghalen
 window.addEventListener("keyup", Stop);
 
-lastmove = "";
-
 function Stop(){   
-    if(lastmove == "F" || lastmove == "B" || lastmove == "L" || lastmove == "R"){	
+    if(document.getElementById('lastmove').innerHTML == "F" || 
+    document.getElementById('lastmove').innerHTML == "B" || 
+    document.getElementById('lastmove').innerHTML == "L" || 
+    document.getElementById('lastmove').innerHTML == "R"){	
         stopmessage = "S";
+        document.getElementById('lastmove').innerHTML = 'S'
+        console.log(stopmessage);
         $.ajax( {
                 url: "sendCommand.php",
                 method: "POST",
@@ -21,7 +24,6 @@ function Stop(){
         });
     }
 }
-//mocht het niet kloppen dan kun je dit weghalen
 
 function getKeyPress()
 {
@@ -31,22 +33,23 @@ function getKeyPress()
     {
         case 87:
             cmd = "F";
-            lastmove = "F";
+            document.getElementById('lastmove').innerHTML = "F";
             break;
         case 83:
             cmd = "B";
-            lastmove = "B";
+            document.getElementById('lastmove').innerHTML = "B";
             break;
         case 65:
             cmd = "L";
-            lastmove = "L";
+            document.getElementById('lastmove').innerHTML = "L";
             break;
         case 68:
             cmd = "R";
-            lastmove = "R";
+            document.getElementById('lastmove').innerHTML = "R";
             break;
         case 81:
             cmd = "S";
+            document.getElementById('lastmove').innerHTML = "S";
             break;
     }
     console.log(cmd);

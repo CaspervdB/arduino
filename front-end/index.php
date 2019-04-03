@@ -136,6 +136,7 @@
                 }
             ?>
         </div>
+        <div id="lastmove"> ..</div>
         <script src="index.js"></script>
 		<?php
 		include 'sendCommand.php';
