@@ -1,8 +1,8 @@
- <?php
+<?php
     include "dbConn.php";
     $cmd = isset($_POST["command"])? $_POST["command"] : "";
-    $user_id = "9981";
-
+    $user_id = 989;
+    
     if(isset($_POST['w']))
     {
         $cmd = 'F';
@@ -19,8 +19,7 @@
     {
         $cmd = 'S';
     }
-
-
+    
     if ($cmd != "")
     {
 
@@ -50,10 +49,9 @@
                 if($cmd == "B"){
                     echo 'back';
                 }
-				if($cmd == "S"){
+                if($cmd == "S"){
                     echo 'stop';
                 }
-				
 
             }
             //Clean up the $stmt after use

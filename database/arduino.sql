@@ -62,7 +62,8 @@ INSERT INTO `users` (`id`, `username`, `pass`) VALUES
 CREATE TABLE `user_cmd` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `cmd_id` varchar(11) NOT NULL
+  `cmd_id` varchar(11) NOT NULL,
+  `cmd` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

@@ -14,12 +14,10 @@ function Stop(){
         $.ajax( {
                 url: "sendCommand.php",
                 method: "POST",
-                data: {
-                        command:stopmessage
-                },
+                data: {command: "S"},
                 dataType: "text",
                 success: function(strMessage) {
-                        $("#stopped").text(strMessage);
+                    $("#stopped").text(strMessage);
                 }
         });
     }
@@ -33,38 +31,36 @@ function getKeyPress()
     {
         case 87:
             cmd = "F";
-            document.getElementById('lastmove').innerHTML = "F";
             break;
         case 83:
             cmd = "B";
-            document.getElementById('lastmove').innerHTML = "B";
             break;
         case 65:
             cmd = "L";
-            document.getElementById('lastmove').innerHTML = "L";
             break;
         case 68:
             cmd = "R";
-            document.getElementById('lastmove').innerHTML = "R";
             break;
         case 81:
             cmd = "S";
-            document.getElementById('lastmove').innerHTML = "S";
             break;
     }
-    console.log(cmd);
-	if(cmd != "")
-	{	
+    if(document.getElementById('lastmove').innerHTML != cmd){
+	if(cmd != ""){
+        //als hij eerder is ingedrukt, moet hij niet meer spammen
 		$.ajax( {
 			url: "sendCommand.php",
 			method: "POST",
 			data: {
-				command:cmd
+                            command:cmd
 			},
 			dataType: "text",
 			success: function(strMessage) {
-				$("#stopped").text(strMessage);
+                            $("#stopped").text(strMessage);
 			}
 		});
+            console.log(cmd);
+            document.getElementById('lastmove').innerHTML = cmd;
 	}
+    }
 }

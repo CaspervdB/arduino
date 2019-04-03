@@ -15,7 +15,12 @@
             padding: 0;
             margin: 0;
         }
-
+        
+        #lastmove{
+            font-size: 0;
+            height: 0;
+            width: 0;
+        }
         #controllerbox input{
             opacity: 0;
             height: 0px;
